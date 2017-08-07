@@ -10,7 +10,11 @@
             <div class="pull-left info">
                 <p>Alexander Pierce</p>
 
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                <?php if (Yii::$app->user->isGuest): ?>
+                    <a href="#"><i class="fa fa-circle text-default"></i> Offline</a>
+                <?php else: ?>
+                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                <?php endif ?>
             </div>
         </div>
 
@@ -33,7 +37,8 @@
                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
                     ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
-                    ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
+                    ['label' => 'Login', 'url' => ['/user/security/login'], 'visible' => Yii::$app->user->isGuest],
+                    ['label' => 'Register', 'url' => ['/user/registration/register'], 'visible' => Yii::$app->user->isGuest],
                     [
                         'label' => 'Same tools',
                         'icon' => 'share',
